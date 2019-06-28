@@ -1,5 +1,6 @@
 <?php
-
+	require_once 'connection.php';
+	
 	class RegisterUser{
 		
 		public function __construct ($dados){
@@ -7,8 +8,7 @@
 			$surname = $dados['sobrenome'];
 			$age = $dados['idade'];
 
-			try{
-				require_once 'connection.php';			
+			try{			
 			
 				$pdo = Connection::getInstance();
 
@@ -16,7 +16,7 @@
 
 				$stmt= $pdo->prepare($sql);
 
-				$stmt->execute([$name, $surname, $sex]);
+				$stmt->execute([$name, $surname, $age]);
 
 				echo "User successfully registered";				
 			}
@@ -25,7 +25,7 @@
 				echo $sql . "<br>" . $e->getMessage();
 			}
 
-			$connect = null;
+			$stmt = null;
 		}
 	}
 
