@@ -27,5 +27,9 @@
 			}
 			return self::$instance->conn;
 		}
+
+		private function __wakeup(){}
+
+		private function __sleep(){}
 	}
 ?>
